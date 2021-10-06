@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <!--Bootstrap CSS include-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel='stylesheet' type='text/css' href={{ url_for('static', filename='style.css') }}>
+        <title>Dota 2 Hero Analyzer</title>
+    </head>
+    <body>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <div class="container">
+            <br/>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <form action="" method="post" class="card card-sm" autocomplete="off">
+                        <div class="card-body row no-gutters align-items-center autocomplete">
+                            <div class="col-auto">
+                                <i class="fas fa-search h4 text-body"></i>
+                            </div>
+                            <!--end of col-->
+                            <div class="col">
+                                <input name="hero" id="hero-selector" class="form-control form-control-lg form-control-borderless" type="text" placeholder="Search for a hero...">
+                            </div>
+                            <!--end of col-->
+                            <div class="col-auto">
+                                <button class="btn btn-lg btn-success" type="submit">Search</button>
+                            </div>
+                            <!--end of col-->
+                        </div>
+                    </form>
+                </div>
+                <!--end of col-->
+            </div>
+        </div>
+
+        {% if new_url %}
+            <a id='link-to-hero' href={{new_url}} target="_blank"></a>
+            <script>
+                document.getElementById('link-to-hero').click()
+            </script>
+        {% endif %}
+
+        <!--Bootstrap javascript include-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+        <script src={{url_for('static', filename='hero-selector.js')}}></script>
+        <script>
+            autocomplete(document.getElementById("hero-selector"), availableHeroes);
+        </script>
+    </body>
+</html>
